@@ -1,0 +1,10 @@
+.image {
+  width: 150px;
+}
+
+.all_div {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  gap: 30px;
+}
