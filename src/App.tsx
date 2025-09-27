@@ -1,19 +1,14 @@
-import "./App.css";
-import ListMovie from "./conponent/ListMovie/ListMovie";
-import ListSerie from "./conponent/ListSerie/ListSerie";
-
+import { Outlet } from "react-router-dom";
+import Navbar from "./component/Navbar/Navbar";
+import Footer from "./component/Footer/Footer";
 
 function App() {
- 
-
- return(
-<>
-< ListMovie/>
-<ListSerie/>
-</>
-)
-  }
+  return (
+    <>
+      <Navbar />
+      <Outlet/>
+      <Footer />
+    </>
+  );
+}
 export default App;
-
-
-

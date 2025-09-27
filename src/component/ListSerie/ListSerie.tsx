@@ -1,5 +1,5 @@
 import img_error from "../../assets/error_fetch.png";
-import { useEffect, useState } from "react";
+import  {useEffect,useState}   from "react";
 import useFetch from "../../hook/usefetch";
 import "./ListSerie.css"
 

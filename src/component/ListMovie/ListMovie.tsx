@@ -38,19 +38,13 @@ useEffect(() => {
 
     Promise.all([listMovie, trend, latest, topRated])
       .then(([data, data2, data3, data4]) => {
-        console.log(
-          "Résultats API TMDB :",
-          data.results,
-          data2.results,
-          data3.results,
-          data4.results
-        );
+      
 
         setAllMovies(data.results);
         setTrend(data2.results);
         setTests([data3.results[0]]);
         settopRateds(data4.results);
-        console.log("kkkkkkkkkkkkkk", data4);
+   
       })
       .catch((err) => console.error("Erreur API TMDB :", err));
   }, [apiKey]);
