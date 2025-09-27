@@ -15,7 +15,7 @@ function ListMovie() {
   const [trends, setTrend] = useState<ListMovieAllProps[]>([]);
   const [tests, setTests] = useState<ListMovieAllProps[]>([]);
   const [topRateds, settopRateds] = useState<ListMovieAllProps[]>([]);
-const fetchTmdb=useFetch();
+  const fetchTmdb=useFetch();
 
 
 useEffect(() => {

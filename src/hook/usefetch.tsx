@@ -9,7 +9,6 @@ function useFetch (){
       },}
 
 const url = "https://api.themoviedb.org/3/"
-
 function fetchTmdb (endpoint:string) {
 return fetch(url + endpoint, options)
 }
