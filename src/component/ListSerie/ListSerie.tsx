@@ -2,6 +2,7 @@ import img_error from "../../assets/error_fetch.png";
 import  {useEffect,useState}   from "react";
 import useFetch from "../../hook/usefetch";
 import "./ListSerie.css"
+import { Link } from "react-router-dom";
 
 interface ListSerieAllProps {
   id: number;
@@ -37,9 +38,9 @@ function ListSerie() {
           selectedGenres.map((genre: GenreProps) =>
             fetchTmdb(`discover/tv?with_genres=${genre.id}&language=fr-FR`)
               .then((res) => res.json())
-              .then((serieData) => ({
+              .then((data) => ({
                 genre,
-                series: serieData.results, 
+                series: data.results, 
               }))
           )
         ).then((all) => setGenreSeries(all));
@@ -56,6 +57,7 @@ function ListSerie() {
             {genreSerie.series.map((serie) => (
               <li key={serie.id}>
                 <p>{serie.name}</p>
+<Link to={`/serie/${serie.id}`}>
                 <img
                   className="image"
                   src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${serie.poster_path}`}
@@ -64,6 +66,7 @@ function ListSerie() {
                 e.currentTarget.src = img_error;
               }}
                 />
+</Link>
               </li>
             ))}
           </ul>

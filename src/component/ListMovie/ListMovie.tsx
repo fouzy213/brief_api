@@ -2,6 +2,7 @@ import "./ListMovie.css";
 import img_error from "../../assets/error_fetch.png";
 import { useEffect, useState } from "react";
 import useFetch from "../../hook/usefetch";
+import { Link } from "react-router-dom";
 interface ListMovieAllProps {
   id: number;
   title: string;
@@ -10,7 +11,6 @@ interface ListMovieAllProps {
 }
 
 function ListMovie() {
-  const apiKey = import.meta.env.VITE_CLIENT_API_KEY;
   const [allmovies, setAllMovies] = useState<ListMovieAllProps[]>([]);
   const [trends, setTrend] = useState<ListMovieAllProps[]>([]);
   const [tests, setTests] = useState<ListMovieAllProps[]>([]);
@@ -47,7 +47,7 @@ useEffect(() => {
    
       })
       .catch((err) => console.error("Erreur API TMDB :", err));
-  }, [apiKey]);
+  }, );
 
   return (
     <div>
@@ -56,12 +56,16 @@ useEffect(() => {
         {allmovies.map((allmovie) => (
           <li key={allmovie.id}>
             <h3>{allmovie.title}</h3>
+                          <Link to={`/movie/${allmovie.id}`}>
+
             <img
               className="image"
               src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${allmovie.poster_path}`}
               alt={allmovie.title}
             />
+ </Link>
           </li>
+         
         ))}
       </ul>
 
@@ -70,12 +74,15 @@ useEffect(() => {
         {trends.map((trend) => (
           <li key={trend.id}>
             <h3>{trend.title}</h3>
-            {/* <p>{trend.overview}</p> */}
+          
+                          <Link to={`/movie/${trend.id}`}>
+
             <img
               className="image"
               src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${trend.poster_path}`}
               alt={trend.title}
             />
+             </Link>
           </li>
         ))}
       </ul>
@@ -85,7 +92,8 @@ useEffect(() => {
         {topRateds.map((toprated) => (
           <li key={toprated.id}>
             <h3>{toprated.title}</h3>
-            {/* <p>{trend.overview}</p> */}
+          
+              <Link to={`/movie/${toprated.id}`}>
             <img
               className="image"
               src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${toprated.poster_path}`}
@@ -94,6 +102,8 @@ useEffect(() => {
                 e.currentTarget.src = img_error;
               }}
             />
+              </Link>
+
           </li>
         ))}
       </ul>
@@ -103,6 +113,7 @@ useEffect(() => {
         {tests.map((test) => (
           <li key={test.id}>
             <h3>{test.title}</h3>
+            <Link to={`/movie/${test.id}`}>
             <img
               className="image"
               src={
@@ -114,7 +125,7 @@ useEffect(() => {
                 e.currentTarget.src = img_error;
               }}
             />
-
+</Link>
             <p>{test.overview}</p>
           </li>
         ))}
