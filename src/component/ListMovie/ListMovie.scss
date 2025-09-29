@@ -1,0 +1,44 @@
+$secondary:white;
+.image {
+  width: 150px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.image_affiche{
+   width: 300px;
+}
+
+.all_div {
+  gap: 30px;
+  max-width: 100%;       
+  overflow-x:scroll;      
+  scroll-behavior: smooth;
+  padding: 25px 0;
+  margin-bottom: 25px;
+
+}
+
+
+
+
+
+.carroussel{
+padding: 15px;
+}
+
+
+h1{
+  color: $secondary
+}
+
+
+
+.carroussel1{
+  padding-bottom: 10px
+}
+
+
+.para_poster{
+color: aliceblue !important;
+    width: 70%;
+    font-family: cursive
+}

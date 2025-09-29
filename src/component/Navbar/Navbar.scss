@@ -1,0 +1,26 @@
+$primary: #0b1723;
+
+
+
+ul{
+    display:flex ;
+    justify-content: space-around;
+    li{
+        display: flex;
+        color: aliceblue;
+ list-style-type:none ;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+        font-family: system-ui;
+
+        &:hover{
+color: yellow;
+        }
+    }
+}
+
+a{
+     text-decoration: none;
+}
+

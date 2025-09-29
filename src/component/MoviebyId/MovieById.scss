@@ -1,0 +1,23 @@
+.movie-card{
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: white;;
+    border: solid;
+    border-radius: 30px;
+    padding: 20px;
+    width: min-content;
+    gap: 10px;
+}
+
+.poster_by_id{
+    width: 400px;
+}
+.all_card_id{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+        margin: 40px;
+}

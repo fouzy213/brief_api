@@ -1,7 +1,7 @@
 import img_error from "../../assets/error_fetch.png";
 import  {useEffect,useState}   from "react";
 import useFetch from "../../hook/usefetch";
-import "./ListSerie.css"
+import "./ListSerie.scss"
 import { Link } from "react-router-dom";
 
 interface ListSerieAllProps {
@@ -49,14 +49,13 @@ function ListSerie() {
   }, []);
 
   return (
-    <div>
+    <div className="carroussel">
       {genreSeries.map((genreSerie) => (
         <div key={genreSerie.genre.id}>
           <h2>{genreSerie.genre.name}</h2>
           <ul className="all_div">
             {genreSerie.series.map((serie) => (
               <li key={serie.id}>
-                <p>{serie.name}</p>
 <Link to={`/serie/${serie.id}`}>
                 <img
                   className="image"

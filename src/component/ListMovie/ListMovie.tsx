@@ -1,4 +1,4 @@
-import "./ListMovie.css";
+import "./ListMovie.scss";
 import img_error from "../../assets/error_fetch.png";
 import { useEffect, useState } from "react";
 import useFetch from "../../hook/usefetch";
@@ -21,10 +21,10 @@ function ListMovie() {
 useEffect(() => {
  
 
-    const allmovie_url = `movie/popular?language=en-US`;
-    const trend_url = `trending/all/day?language=en-US`;
-    const latest_url = `discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_year=1&primary_release_date.lte=2025-09-08&sort_by=primary_release_date.dsc`;
-    const topRated_url = `movie/top_rated?language=en-US&page=1`;
+    const allmovie_url = `movie/popular?language=fr-FR`;
+    const trend_url = `trending/all/day?language=fr-FR`;
+    const latest_url = `discover/movie?include_adult=false&include_video=false&language=fr-FR&page=1&primary_release_year=1&primary_release_date.lte=2025-09-08&sort_by=primary_release_date.dsc`;
+    const topRated_url = `movie/top_rated?language=fr-FR&page=1`;
 
     const url_array = [allmovie_url, trend_url, latest_url, topRated_url];
 
@@ -50,12 +50,45 @@ useEffect(() => {
   }, );
 
   return (
-    <div>
+    <div className="carroussel">
+
+   <h1>Film populaire à l’affiche</h1>
+   <ul className="all_div_one">
+     <div className="carroussel1">
+        {tests.map((test) => (
+          <li key={test.id}>
+            <Link to={`/movie/${test.id}`}>
+            
+            <img
+              className="image_affiche"
+              src={
+                `https://media.themoviedb.org/t/p/w600_and_h900_bestv2${test.poster_path}` ||
+                "probleme"
+              }
+              alt={test.title}
+              onError={(e) => {
+                e.currentTarget.src = img_error;
+              }}
+              />
+
+</Link>
+            <p className="para_poster">{test.overview}</p>
+              </li>
+        ))}
+      </div>
+      </ul>
+
+
+
+
+
+
+
       <h1>Films du moment</h1>
       <ul className="all_div">
         {allmovies.map((allmovie) => (
           <li key={allmovie.id}>
-            <h3>{allmovie.title}</h3>
+            {/* <h3>{allmovie.title}</h3> */}
                           <Link to={`/movie/${allmovie.id}`}>
 
             <img
@@ -73,7 +106,7 @@ useEffect(() => {
       <ul className="all_div">
         {trends.map((trend) => (
           <li key={trend.id}>
-            <h3>{trend.title}</h3>
+            {/* <h3>{trend.title}</h3> */}
           
                           <Link to={`/movie/${trend.id}`}>
 
@@ -91,7 +124,7 @@ useEffect(() => {
       <ul className="all_div">
         {topRateds.map((toprated) => (
           <li key={toprated.id}>
-            <h3>{toprated.title}</h3>
+            {/* <h3>{toprated.title}</h3> */}
           
               <Link to={`/movie/${toprated.id}`}>
             <img
@@ -108,28 +141,7 @@ useEffect(() => {
         ))}
       </ul>
 
-      <h1>Film populaire à l’affiche</h1>
-      <ul className="all_div">
-        {tests.map((test) => (
-          <li key={test.id}>
-            <h3>{test.title}</h3>
-            <Link to={`/movie/${test.id}`}>
-            <img
-              className="image"
-              src={
-                `https://media.themoviedb.org/t/p/w600_and_h900_bestv2${test.poster_path}` ||
-                "probleme"
-              }
-              alt={test.title}
-              onError={(e) => {
-                e.currentTarget.src = img_error;
-              }}
-            />
-</Link>
-            <p>{test.overview}</p>
-          </li>
-        ))}
-      </ul>
+   
     </div>
   );
 }

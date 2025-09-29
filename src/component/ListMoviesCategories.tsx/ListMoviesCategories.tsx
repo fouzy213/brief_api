@@ -1,4 +1,4 @@
-import "./ListMoviesCategories.css"
+import "./ListMoviesCategories.scss"
 import img_error from "../../assets/error_fetch.png";
 import useFetch from "../../hook/usefetch";
 import { useEffect, useState } from "react";
@@ -52,7 +52,7 @@ Promise.all(
 
 
     return (
-        <div>
+        <div className="carroussel">
 
 
       {genreMovies.map((genreMovie) => (
