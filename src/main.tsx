@@ -6,8 +6,8 @@ import HomePage from './component/pages/HomePage';
 import SeriePage from './component/pages/SeriePage';
 import './index.css';
 import MoviePage from './component/pages/MoviePage';
-import MoviebyIdPage from './component/pages/MovieById';
-import SerieByIdPage from './component/pages/SerieByIdPage';
+
+import CardId from './component/CardId/CardId';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +16,8 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/series", element: <SeriePage /> },
       {path:"/movies",element:<MoviePage/>},
-      {path:`/movie/:id`,element:<MoviebyIdPage/>},
-      {path:`/serie/:id`,element:<SerieByIdPage/>},
+      {path:`/movie/:id`,element:<CardId type="movie"/>},
+      {path:`/serie/:id`,element:<CardId type="tv" />},
 
     ],
   },
