@@ -3,20 +3,10 @@ import useFetch from "../../hook/usefetch";
 import { useEffect, useState } from "react";
 import img_error from "../../assets/error_fetch.png";
 import "./CardId.scss";
+import type { MediaByIDProps, MediaByIdPropsType } from "./../type";
 
-interface MediaByIDProps {
-  id: number;
-  title?: string;
-  name: string;
-  poster_path: string;
-  overview: string;
-}
 
-interface MediaByIdProps {
-  type?: "movie" | "tv";
-}
-
-function CardId({ type }: MediaByIdProps) {
+function CardId({ type }: MediaByIdPropsType) {
   const { id } = useParams<{ id: string }>();
   const fetchTmdb = useFetch();
   const [media, setMedia] = useState<MediaByIDProps | null>(null);

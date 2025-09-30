@@ -3,24 +3,7 @@ import  {useEffect,useState}   from "react";
 import useFetch from "../../hook/usefetch";
 import "./ListSerie.scss"
 import { Link } from "react-router-dom";
-
-interface ListSerieAllProps {
-  id: number;
-  title?: string;
-  name: string;
-  poster_path: string;
-  overview: string;
-}
-
-interface GenreProps {
-  id: number;
-  name: string;
-}
-
-interface GenreWithSeries {
-  genre: GenreProps;
-  series: ListSerieAllProps[];
-}
+import type { GenreProps, GenreWithSeries } from "../type";
 
 function ListSerie() {
   const fetchTmdb = useFetch();

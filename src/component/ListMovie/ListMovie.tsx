@@ -3,12 +3,7 @@ import img_error from "../../assets/error_fetch.png";
 import { useEffect, useState } from "react";
 import useFetch from "../../hook/usefetch";
 import { Link } from "react-router-dom";
-interface ListMovieAllProps {
-  id: number;
-  title: string;
-  poster_path: string;
-  overview: string;
-}
+import type { ListMovieAllProps } from "../type";
 
 function ListMovie() {
   const [allmovies, setAllMovies] = useState<ListMovieAllProps[]>([]);

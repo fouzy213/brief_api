@@ -3,26 +3,7 @@ import img_error from "../../assets/error_fetch.png";
 import useFetch from "../../hook/usefetch";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-interface ListSerieAllProps {
-id: number;
-title?: string;
-name: string;
-poster_path: string;
-overview: string;
-}
-
-interface GenreProps {
-id: number;
-name: string;
-}
-
-interface GenreWithMovies {
-genre: GenreProps;
-movies: ListSerieAllProps[];
-}
-
-
+import type { GenreProps, GenreWithMovies } from "../type";
 
 function ListMoviesCategories () {
   const fetchTmdb = useFetch();
