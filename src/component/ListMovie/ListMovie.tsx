@@ -10,12 +10,9 @@ function ListMovie() {
   const [trends, setTrend] = useState<ListMovieAllProps[]>([]);
   const [tests, setTests] = useState<ListMovieAllProps[]>([]);
   const [topRateds, settopRateds] = useState<ListMovieAllProps[]>([]);
-  const fetchTmdb=useFetch();
+  const fetchTmdb = useFetch();
 
-
-useEffect(() => {
- 
-
+  useEffect(() => {
     const allmovie_url = `movie/popular?language=fr-FR`;
     const trend_url = `trending/all/day?language=fr-FR`;
     const latest_url = `discover/movie?include_adult=false&include_video=false&language=fr-FR&page=1&primary_release_year=1&primary_release_date.lte=2025-09-08&sort_by=primary_release_date.dsc`;
@@ -23,77 +20,70 @@ useEffect(() => {
 
     const url_array = [allmovie_url, trend_url, latest_url, topRated_url];
 
+    const listMovie = fetchTmdb(url_array[0])
+      .then((res) => res.json())
+      .catch((error) => console.error(error));
+    const trend = fetchTmdb(url_array[1])
+      .then((res) => res.json())
+      .catch((error) => console.error(error));
 
-    const listMovie = fetchTmdb(url_array[0]).then((res) => res.json()).catch((error)=>console.error(error));
-    const trend = fetchTmdb(url_array[1]).then((res) => res.json()).catch((error)=>console.error(error));
+    const latest = fetchTmdb(url_array[2])
+      .then((res) => res.json())
+      .catch((error) => console.error(error));
 
-    const latest = fetchTmdb(url_array[2]).then((res) => res.json()).catch((error)=>console.error(error));
-
-    const topRated = fetchTmdb(url_array[3]).then((res) => res.json()).catch((error)=>console.error(error));
+    const topRated = fetchTmdb(url_array[3])
+      .then((res) => res.json())
+      .catch((error) => console.error(error));
 
     Promise.all([listMovie, trend, latest, topRated])
       .then(([data, data2, data3, data4]) => {
-      
-
         setAllMovies(data.results);
         setTrend(data2.results);
         setTests([data3.results[0]]);
         settopRateds(data4.results);
-   
       })
       .catch((err) => console.error("Erreur API TMDB :", err));
-  }, );
+  });
 
   return (
     <div className="carroussel">
-
-   <h1>Film populaire à l’affiche</h1>
-   <ul className="all_div_one">
-     <div className="carroussel1">
-        {tests.map((test) => (
-          <li key={test.id}>
-            <Link to={`/movie/${test.id}`}>
-            
-            <img
-              className="image_affiche"
-              src={
-                `https://media.themoviedb.org/t/p/w600_and_h900_bestv2${test.poster_path}` ||
-                "probleme"
-              }
-              alt={test.title}
-              onError={(e) => {
-                e.currentTarget.src = img_error;
-              }}
-              />
-
-</Link>
-            <p className="para_poster">{test.overview}</p>
-              </li>
-        ))}
-      </div>
+      <h1>Film populaire à l’affiche</h1>
+      <ul className="all_div_one">
+        <div className="carroussel1">
+          {tests.map((test) => (
+            <li key={test.id}>
+              <Link to={`/movie/${test.id}`}>
+                <img
+                  className="image_affiche"
+                  src={
+                    `https://media.themoviedb.org/t/p/w600_and_h900_bestv2${test.poster_path}` ||
+                    "probleme"
+                  }
+                  alt={test.title}
+                  onError={(e) => {
+                    e.currentTarget.src = img_error;
+                  }}
+                />
+              </Link>
+              <p className="para_poster">{test.overview}</p>
+            </li>
+          ))}
+        </div>
       </ul>
-
-
-
-
-
-
 
       <h1>Films du moment</h1>
       <ul className="all_div">
         {allmovies.map((allmovie) => (
           <li key={allmovie.id}>
             {/* <h3>{allmovie.title}</h3> */}
-                          <Link to={`/movie/${allmovie.id}`}>
-
-            <img
-              className="image"
-              src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${allmovie.poster_path}`}
-              alt={allmovie.title}
-            />
- </Link>
+            <Link to={`/movie/${allmovie.id}`}>
+              <img
+                className="image"
+                src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${allmovie.poster_path}`}
+                alt={allmovie.title}
+              />
+            </Link>
           </li>
-         
         ))}
       </ul>
 
@@ -102,15 +92,14 @@ useEffect(() => {
         {trends.map((trend) => (
           <li key={trend.id}>
             {/* <h3>{trend.title}</h3> */}
-          
-                          <Link to={`/movie/${trend.id}`}>
 
-            <img
-              className="image"
-              src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${trend.poster_path}`}
-              alt={trend.title}
-            />
-             </Link>
+            <Link to={`/movie/${trend.id}`}>
+              <img
+                className="image"
+                src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${trend.poster_path}`}
+                alt={trend.title}
+              />
+            </Link>
           </li>
         ))}
       </ul>
@@ -120,23 +109,20 @@ useEffect(() => {
         {topRateds.map((toprated) => (
           <li key={toprated.id}>
             {/* <h3>{toprated.title}</h3> */}
-          
-              <Link to={`/movie/${toprated.id}`}>
-            <img
-              className="image"
-              src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${toprated.poster_path}`}
-              alt={toprated.title}
-              onError={(e) => {
-                e.currentTarget.src = img_error;
-              }}
-            />
-              </Link>
 
+            <Link to={`/movie/${toprated.id}`}>
+              <img
+                className="image"
+                src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${toprated.poster_path}`}
+                alt={toprated.title}
+                onError={(e) => {
+                  e.currentTarget.src = img_error;
+                }}
+              />
+            </Link>
           </li>
         ))}
       </ul>
-
-   
     </div>
   );
 }

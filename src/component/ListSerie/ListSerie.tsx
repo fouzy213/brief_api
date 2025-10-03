@@ -1,7 +1,7 @@
 import img_error from "../../assets/error_fetch.png";
-import  {useEffect,useState}   from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../../hook/usefetch";
-import "./ListSerie.scss"
+import "./ListSerie.scss";
 import { Link } from "react-router-dom";
 import type { GenreProps, GenreWithSeries } from "../type";
 
@@ -23,7 +23,7 @@ function ListSerie() {
               .then((res) => res.json())
               .then((data) => ({
                 genre,
-                series: data.results, 
+                series: data.results,
               }))
           )
         ).then((all) => setGenreSeries(all));
@@ -39,16 +39,16 @@ function ListSerie() {
           <ul className="all_div">
             {genreSerie.series.map((serie) => (
               <li key={serie.id}>
-<Link to={`/serie/${serie.id}`}>
-                <img
-                  className="image"
-                  src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${serie.poster_path}`}
-                  alt={serie.name}
-                   onError={(e) => {
-                e.currentTarget.src = img_error;
-              }}
-                />
-</Link>
+                <Link to={`/serie/${serie.id}`}>
+                  <img
+                    className="image"
+                    src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${serie.poster_path}`}
+                    alt={serie.name}
+                    onError={(e) => {
+                      e.currentTarget.src = img_error;
+                    }}
+                  />
+                </Link>
               </li>
             ))}
           </ul>

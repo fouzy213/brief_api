@@ -1,69 +1,112 @@
-# React + TypeScript + Vite
+🎬 Simplo’ciné – MVP Netflix-like
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projet développé dans le cadre d’un stage chez Simplo’ciné, un service en ligne dédié aux informations cinématographiques (sorties, avis, casting, etc.).
+L’objectif est de concevoir un MVP (Minimum Viable Product) inspiré de Netflix (sans vidéos), afin d’explorer le futur service de streaming.
 
-Currently, two official plugins are available:
+🚀 Objectifs
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Créer une application frontend React + TypeScript
 
-## Expanding the ESLint configuration
+Intégration mobile first et responsive
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Exploiter les fonctionnalités clés de React (hooks, composants, props, state management)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Garantir l’intégrité des données grâce à un typage fort (TypeScript)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Consommer l’API officielle Simplo’ciné pour récupérer et afficher les données
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+📅 Modalités pédagogiques
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Projet réalisé en solo
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Durée : 10 demi-journées
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Date de rendu : 03/10/2025 via Simplonline
+
+📖 Fonctionnalités attendues
+🏡 Page d’accueil
+
+Une bannière dynamique affichant un film populaire aléatoire à chaque rechargement
+
+Trois carrousels :
+
+Films les plus populaires
+
+Films les mieux notés
+
+Sorties à venir
+
+🎥 Page de liste des films
+
+5 carrousels dynamiques selon des genres (au choix)
+
+Chaque élément est cliquable et redirige vers la page de détail du film
+
+📺 Page de liste des séries
+
+5 carrousels dynamiques
+
+Chaque élément est cliquable et redirige vers la page de détail de la série
+
+🔍 Page de détail (film ou série)
+
+Présentation complète des informations disponibles via l’API
+
+Casting principal avec photo
+
+Carrousel de recommandations (films ou séries similaires)
+
+🎭 Page de détail d’un membre du casting
+
+Informations détaillées de l’acteur/actrice
+
+Carrousel présentant sa filmographie
+
+🛠️ Stack technique
+
+React 18
+
+TypeScript
+
+Vite 
+
+React Router pour la navigation
+
+Fetch API pour les appels API
+
+SCSS pour le style responsive
+
+
+📦 Installation
+# Cloner le projet
+git clone git@github.com:fouzy213/brief_api.git
+cd simplo-cine
+
+# Installer les dépendances
+npm install
+
+# Lancer en mode développement
+npm run dev
+
+# Procuration jeton Api a mettre dans le .env
+.env copy
+
+
+
+📸 Aperçu (MVP Netflix-like)
+
+
+✅ Bonnes pratiques
+
+Code typer avec TypeScript
+
+Organisation en composants réutilisables
+
+Respect des standards ESLint + Prettier
+
+Approche mobile first avec media queries SCSS 
+
+📌 Auteur
+
+👤 Fouzy – Développeur Frontend
+Stage chez Simplo’ciné 
